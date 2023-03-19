@@ -1,0 +1,28 @@
+---
+# tasks file for roles
+- name: configure time
+  copy: 
+    src: /usr/share/zoneinfo/Europe/Moscow
+    dest: /etc/localtime
+  notify: 
+    - restart_chron
+    
+- name: install epel
+  yum:
+    name: epel-release
+    state: present
+    
+- name: install nginx
+  yum:
+    name: nginx
+    state: present
+    
+- name: configure nginx
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+  notify:
+   - restart_nginx
+   
+- name: remove img
+  shell: "rm -rf /usr/share/nginx/html"

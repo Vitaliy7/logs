@@ -1,0 +1,13 @@
+---
+# handlers file for roles
+- name: restart_chron
+  systemd:
+    name: chronyd
+    state: restarted
+    enabled: yes
+    
+- name: restart_nginx
+  systemd:
+    name: nginx
+    state: restarted
+    enabled: yes

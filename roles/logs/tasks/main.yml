@@ -1,0 +1,15 @@
+---
+# tasks file for logs
+- name: configure time
+  copy: 
+    src: /usr/share/zoneinfo/Europe/Moscow
+    dest: /etc/localtime
+  notify: 
+    - restart_chron
+    
+- name: copy rsyslog
+  copy:
+    src: rsyslog.conf
+    dest: /etc/rsyslog.conf
+  notify:
+    - restart_rsyslog

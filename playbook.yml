@@ -1,0 +1,14 @@
+---
+  - name: install and configure
+    hosts: web
+    become: yes
+
+    roles: 
+     - web
+     
+  - name: install and configure2
+    hosts: log
+    become: yes
+
+    roles:
+     - logs

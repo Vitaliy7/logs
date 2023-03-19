@@ -1,0 +1,13 @@
+---
+# handlers file for logs
+ - name: restart_chron
+   service:
+     name: chronyd
+     state: restarted
+     enabled: yes
+    
+ - name: restart_rsyslog
+   service:
+     name: rsyslog.service
+     state: restarted
+     enabled: yes
